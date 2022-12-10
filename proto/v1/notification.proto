@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package proto.v1;
+
+import "google/protobuf/empty.proto";
+
+service NotificationService {
+  rpc SendNotification(SendNotificationRequest) returns (google.protobuf.Empty);
+  rpc NotificationList(NotificationListRequest) returns (NotificationListResponse);
+}
+
+message SendNotificationRequest {
+  NotificationType type = 1;
+  string user_id = 2;
+  string body = 3;
+}
+
+enum NotificationType {
+  NOTIFICATION_TYPE_UNSPECIFIED = 0;
+  NOTIFICATION_TYPE_EMAIL = 1;
+  NOTIFICATION_TYPE_SLACK = 2;
+}
+
+message NotificationListRequest {
+  string user_id = 1;
+}
+
+message NotificationListResponse {
+  repeated Notification notifications = 1;
+}
+
+message Notification {
+  uint64 id = 1;
+  NotificationType type = 2;
+  string body = 3;
+}
