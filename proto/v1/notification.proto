@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package proto.v1;
+option go_package = "server/gen/proto/v1";
 
 import "google/protobuf/empty.proto";
 

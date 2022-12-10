@@ -1,6 +1,7 @@
 .PHONY: proto
 
 proto:
+	rm -rf server/gen
 	rm -rf web/src/gen
 	buf generate
 
